@@ -477,76 +477,106 @@ def main():
         layout="wide"
     )
     
-    # Custom CSS for clean professional styling
+    # Custom CSS for modern styling
     st.markdown("""
     <style>
-    /* Clean background */
+    /* Main background */
     .stApp {
-        background-color: #f8f9fa;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
     
-    /* Main container */
+    /* Custom container */
     .main-container {
-        background: white;
+        background: rgba(255, 255, 255, 0.95);
         padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        margin: 1rem 0;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        backdrop-filter: blur(10px);
+        margin: 1rem;
     }
     
-    /* Clean title */
+    /* Title styling */
     .main-title {
-        color: #2c3e50;
-        font-weight: 600;
+        font-size: 3rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         text-align: center;
         margin-bottom: 0.5rem;
-        font-size: 2.5rem;
     }
     
     .subtitle {
         text-align: center;
-        color: #7f8c8d;
+        color: #666;
+        font-size: 1.2rem;
         margin-bottom: 2rem;
     }
     
-    /* Password box */
+    /* Password container */
     .password-container {
-        background: white;
-        padding: 2rem;
-        border-radius: 8px;
-        border: 1px solid #e9ecef;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 3rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        text-align: center;
         max-width: 400px;
         margin: 2rem auto;
-        text-align: center;
     }
     
-    /* Button improvements */
+    /* Input styling */
+    .stTextInput > div > div > input {
+        border-radius: 10px;
+        border: 2px solid #e0e0e0;
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+    
+    .stTextInput > div > div > input:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    /* Button styling */
     .stButton > button {
-        background-color: #3498db;
+        background: linear-gradient(45deg, #667eea, #764ba2);
         color: white;
         border: none;
-        border-radius: 6px;
-        padding: 0.6rem 1.5rem;
-        font-weight: 500;
+        border-radius: 10px;
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
     }
     
     .stButton > button:hover {
-        background-color: #2980b9;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
     }
     
-    /* Results styling */
+    /* Results container */
     .results-container {
         background: white;
-        padding: 1.5rem;
-        border-radius: 8px;
-        border: 1px solid #e9ecef;
-        margin-top: 1rem;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        margin-top: 2rem;
     }
     
-    /* Hide streamlit elements */
+    /* Hide Streamlit branding */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
-    .stDeployButton {visibility: hidden;}
+    header {visibility: hidden;}
+    
+    /* Success/Error messages */
+    .stSuccess {
+        background: linear-gradient(90deg, #51cf66, #40c057);
+        border-radius: 10px;
+    }
+    
+    .stError {
+        background: linear-gradient(90deg, #ff6b6b, #ee5a52);
+        border-radius: 10px;
+    }
     </style>
     """, unsafe_allow_html=True)
     

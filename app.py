@@ -477,106 +477,76 @@ def main():
         layout="wide"
     )
     
-    # Custom CSS for modern styling
+    # Custom CSS for clean professional styling
     st.markdown("""
     <style>
-    /* Main background */
+    /* Clean background */
     .stApp {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background-color: #f8f9fa;
     }
     
-    /* Custom container */
+    /* Main container */
     .main-container {
-        background: rgba(255, 255, 255, 0.95);
+        background: white;
         padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        backdrop-filter: blur(10px);
-        margin: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        margin: 1rem 0;
     }
     
-    /* Title styling */
+    /* Clean title */
     .main-title {
-        font-size: 3rem;
-        font-weight: 700;
-        background: linear-gradient(45deg, #667eea, #764ba2);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #2c3e50;
+        font-weight: 600;
         text-align: center;
         margin-bottom: 0.5rem;
+        font-size: 2.5rem;
     }
     
     .subtitle {
         text-align: center;
-        color: #666;
-        font-size: 1.2rem;
+        color: #7f8c8d;
         margin-bottom: 2rem;
     }
     
-    /* Password container */
+    /* Password box */
     .password-container {
-        background: rgba(255, 255, 255, 0.9);
-        padding: 3rem;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        text-align: center;
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
         max-width: 400px;
         margin: 2rem auto;
+        text-align: center;
     }
     
-    /* Input styling */
-    .stTextInput > div > div > input {
-        border-radius: 10px;
-        border: 2px solid #e0e0e0;
-        padding: 0.75rem;
-        font-size: 1rem;
-    }
-    
-    .stTextInput > div > div > input:focus {
-        border-color: #667eea;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-    }
-    
-    /* Button styling */
+    /* Button improvements */
     .stButton > button {
-        background: linear-gradient(45deg, #667eea, #764ba2);
+        background-color: #3498db;
         color: white;
         border: none;
-        border-radius: 10px;
-        padding: 0.75rem 2rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
+        border-radius: 6px;
+        padding: 0.6rem 1.5rem;
+        font-weight: 500;
     }
     
     .stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        background-color: #2980b9;
     }
     
-    /* Results container */
+    /* Results styling */
     .results-container {
         background: white;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        margin-top: 2rem;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+        margin-top: 1rem;
     }
     
-    /* Hide Streamlit branding */
+    /* Hide streamlit elements */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
-    header {visibility: hidden;}
-    
-    /* Success/Error messages */
-    .stSuccess {
-        background: linear-gradient(90deg, #51cf66, #40c057);
-        border-radius: 10px;
-    }
-    
-    .stError {
-        background: linear-gradient(90deg, #ff6b6b, #ee5a52);
-        border-radius: 10px;
-    }
+    .stDeployButton {visibility: hidden;}
     </style>
     """, unsafe_allow_html=True)
     
@@ -586,7 +556,7 @@ def main():
 
     if not st.session_state.authenticated:
         st.markdown('<div class="main-container">', unsafe_allow_html=True)
-        st.markdown('<h1 class="main-title">🔒 Content Evaluator Pro</h1>', unsafe_allow_html=True)
+        st.markdown('<h1 class="main-title">Content Evaluator Pro</h1>', unsafe_allow_html=True)
         st.markdown('<p class="subtitle">Professional Content Analysis Tool</p>', unsafe_allow_html=True)
         
         st.markdown('<div class="password-container">', unsafe_allow_html=True)
@@ -608,7 +578,7 @@ def main():
     
     # Main app content
     st.markdown('<div class="main-container">', unsafe_allow_html=True)
-    st.markdown('<h1 class="main-title">📊 Content Evaluator Pro</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">Content Evaluator Pro</h1>', unsafe_allow_html=True)
     st.markdown('<p class="subtitle">Professional content analysis using Google\'s official evaluation criteria</p>', unsafe_allow_html=True)
     
     # Sidebar for input method selection

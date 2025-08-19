@@ -477,172 +477,42 @@ def main():
         layout="wide"
     )
     
-    # Custom CSS for modern styling
-    st.markdown("""
-    <style>
-    /* Main background */
-    .stApp {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-    
-    /* Custom container */
-    .main-container {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        backdrop-filter: blur(10px);
-        margin: 1rem;
-    }
-    
-    /* Title styling */
-    .main-title {
-        font-size: 3rem;
-        font-weight: 700;
-        background: linear-gradient(45deg, #667eea, #764ba2);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-align: center;
-        margin-bottom: 0.5rem;
-    }
-    
-    .subtitle {
-        text-align: center;
-        color: #666;
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-    }
-    
-    /* Password container */
-    .password-container {
-        background: rgba(255, 255, 255, 0.9);
-        padding: 3rem;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        text-align: center;
-        max-width: 400px;
-        margin: 2rem auto;
-    }
-    
-    /* Input styling */
-    .stTextInput > div > div > input {
-        border-radius: 10px;
-        border: 2px solid #e0e0e0;
-        padding: 0.75rem;
-        font-size: 1rem;
-    }
-    
-    .stTextInput > div > div > input:focus {
-        border-color: #667eea;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-    }
-    
-    /* Button styling */
-    .stButton > button {
-        background: linear-gradient(45deg, #667eea, #764ba2);
-        color: white;
-        border: none;
-        border-radius: 10px;
-        padding: 0.75rem 2rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
-    }
-    
-    .stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-    }
-    
-    /* Results container */
-    .results-container {
-        background: white;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        margin-top: 2rem;
-    }
-    
-    /* Hide Streamlit branding */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    
-    /* Success/Error messages */
-    .stSuccess {
-        background: linear-gradient(90deg, #51cf66, #40c057);
-        border-radius: 10px;
-    }
-    
-    .stError {
-        background: linear-gradient(90deg, #ff6b6b, #ee5a52);
-        border-radius: 10px;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-    
     # Password protection
     if 'authenticated' not in st.session_state:
         st.session_state.authenticated = False
 
     if not st.session_state.authenticated:
-        st.markdown('<div class="main-container">', unsafe_allow_html=True)
-        st.markdown('<h1 class="main-title">🔒 Content Evaluator Pro</h1>', unsafe_allow_html=True)
-        st.markdown('<p class="subtitle">Professional Content Analysis Tool</p>', unsafe_allow_html=True)
-        
-        st.markdown('<div class="password-container">', unsafe_allow_html=True)
-        st.markdown("### Enter Access Code")
-        password = st.text_input("", placeholder="Enter your access code", type="password")
-        
-        col1, col2, col3 = st.columns([1, 2, 1])
-        with col2:
-            if st.button("🚀 Access Tool", use_container_width=True):
-                valid_passwords = os.getenv('VALID_PASSWORDS', '').split(',')
-                if password in valid_passwords:
-                    st.session_state.authenticated = True
-                    st.rerun()
-                else:
-                    st.error("❌ Invalid access code")
-        st.markdown('</div>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.title("🔒 Access Required")
+        password = st.text_input("Enter password:", type="password")
+        if st.button("Access Tool"):
+            valid_passwords = os.getenv('VALID_PASSWORDS', '').split(',')
+            if password in valid_passwords:
+                st.session_state.authenticated = True
+                st.rerun()
+            else:
+                st.error("Incorrect password")
         return
     
-    # Main app content
-    st.markdown('<div class="main-container">', unsafe_allow_html=True)
-    st.markdown('<h1 class="main-title">📊 Content Evaluator Pro</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="subtitle">Professional content analysis using Google\'s official evaluation criteria</p>', unsafe_allow_html=True)
+    st.title("📊 Content Evaluation Tool")
+    st.markdown("**Evaluate web content against Google's Helpful Content & Search Quality Guidelines**")
     
     # Sidebar for input method selection
-    with st.sidebar:
-        st.markdown("### 🎯 Analysis Method")
-        input_method = st.radio(
-            "Choose input method:",
-            ["🔗 URL Analysis", "📝 Raw Content"],
-            label_visibility="collapsed"
-        )
-        
-        st.markdown("---")
-        st.markdown("### ℹ️ About")
-        st.markdown("This tool evaluates content using Google's official Search Quality Rater Guidelines - the same criteria used by Google's 16,000+ quality evaluators worldwide.")
-        
-        st.markdown("### 📋 Evaluation Categories")
-        categories = [
-            "Content Quality", "Credibility", "Engagement", 
-            "Originality", "Structure", "Trust", 
-            "Metadata", "Page Quality"
-        ]
-        for cat in categories:
-            st.markdown(f"• {cat}")
+    st.sidebar.header("Input Method")
+    input_method = st.sidebar.radio(
+        "Choose input method:",
+        ["URL", "Raw Content"]
+    )
     
-    # Main content area with custom styling
-    col1, col2 = st.columns([1, 1.5])
+    # Main content area
+    col1, col2 = st.columns([1, 2])
     
     with col1:
-        st.markdown("### 🔍 Input Content")
+        st.header("Input")
         
-        if input_method == "🔗 URL Analysis":
+        if input_method == "URL":
             url = st.text_input("Enter URL to evaluate:", placeholder="https://example.com/article")
             
-            if st.button("🔍 Analyze URL", type="primary", use_container_width=True):
+            if st.button("🔍 Analyze URL", type="primary"):
                 if url:
                     with st.spinner("Extracting content from URL..."):
                         content_data = extract_content_from_url(url)

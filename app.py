@@ -556,7 +556,7 @@ def main():
 
     if not st.session_state.authenticated:
         st.markdown('<div class="main-container">', unsafe_allow_html=True)
-        st.markdown('<h1 class="main-title">Content Evaluator Pro</h1>', unsafe_allow_html=True)
+        st.markdown('<h1 class="main-title">🔒 Content Evaluator Pro</h1>', unsafe_allow_html=True)
         st.markdown('<p class="subtitle">Professional Content Analysis Tool</p>', unsafe_allow_html=True)
         
         st.markdown('<div class="password-container">', unsafe_allow_html=True)
@@ -578,7 +578,7 @@ def main():
     
     # Main app content
     st.markdown('<div class="main-container">', unsafe_allow_html=True)
-    st.markdown('<h1 class="main-title">Content Evaluator Pro</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">📊 Content Evaluator Pro</h1>', unsafe_allow_html=True)
     st.markdown('<p class="subtitle">Professional content analysis using Google\'s official evaluation criteria</p>', unsafe_allow_html=True)
     
     # Sidebar for input method selection

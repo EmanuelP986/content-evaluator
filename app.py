@@ -6,6 +6,24 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
+import streamlit as st
+
+# Allow iframe embedding
+st.set_page_config(
+    page_title="Content Evaluator Tool",
+    page_icon="📊",
+    layout="wide"
+)
+
+# Add this to allow iframe embedding
+st.markdown("""
+<script>
+if (window.top !== window.self) {
+    window.top.location = window.self.location;
+}
+</script>
+""", unsafe_allow_html=True)
+
 # Load environment variables
 load_dotenv()
 
